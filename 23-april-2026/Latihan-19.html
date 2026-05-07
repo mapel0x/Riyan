@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Javascript Confirmation</title>
+    <script>
+        function confirmation()
+        {
+
+            var yakin = confirm("Apakah kamu yakin?");
+
+            if (yakin) {
+                document.write("Ya, Saya Yakin");
+            } else {
+                document.write("Saya tidak yakin :)");
+            }
+        }
+    </script>
+</head>
+<body>
+        <button onclick="confirmation()">Konfirmasi</button>
+</body>
+</html>

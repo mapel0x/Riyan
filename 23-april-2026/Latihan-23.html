@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Javascipt Input Form</title>
+    <script>
+        function ganjil_genap()
+        {
+
+            var nilai = document.proses.bil1.value;
+            if(nilai%2 == 0)
+            {
+                document.getElementById("hasil").innerHTML = "Bilangan Genap";
+            } else
+            {
+                document.getElementById("hasil").innerHTML = "Bilangan Ganjil";
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <form method="post" name="proses">
+        Bilangan 1 : <input type="text" name="bil1">
+        <input type="button" name="button1" value="cek" onclick="ganjil_genap()">
+
+        <p id="hasil"></p>
+    </form>
+</body>
+</html>

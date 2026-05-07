@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dasar Aritmatika javascript</title>
+    <script>
+        function kali(nilai1, nilai2)
+        {
+            document.write("Perkalian " + nilai1 + " * " + nilai2 + " = ");
+            document.write(nilai1*nilai2 + "<br>");
+        }
+        function bagi(nilai1, nilai2)
+        {
+            document.write("Pembagian " + nilai1 + " / " + nilai2 + " = ");
+            document.write(nilai1/nilai2 + "<br>");
+        }
+        function jumlah(nilai1, nilai2)
+        {
+            document.write("Penjumlahan " + nilai1 + " + " + nilai2 + " = ");
+            document.write(nilai1+nilai2 + "<br>");
+        }
+        function kurang(nilai1, nilai2)
+        {
+            document.write("Pengurangan " + nilai1 + " - " + nilai2 + " = ");
+            document.write(nilai1-nilai2 + "<br>");
+        }
+    </script>
+</head>
+<body>
+        <input type="button" name="button1" value="Perkalian"
+            onclick="kali(9,4)">
+        <input type="button" name="button1" value="Pembagian"
+            onclick="bagi(9,4)">
+        <input type="button" name="button1" value="Penjumlahan"
+            onclick="jumlah(9,4)">
+        <input type="button" name="button1" value="Pengurangan"
+            onclick="kurang(9,4)">
+</body>
+</html>

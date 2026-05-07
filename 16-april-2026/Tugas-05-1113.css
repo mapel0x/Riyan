@@ -1,0 +1,101 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    padding: 40px; /* Jarak dari tepi layar */
+}
+
+.layout-container {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Jarak antar baris */
+}
+
+/* Base style untuk semua kotak agar tampilannya seragam dengan border biru */
+.layout-container > header,
+.layout-container > nav,
+.layout-container > section,
+.layout-container > footer,
+.content-wrapper > article,
+.sidebar-wrapper > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #5d8ab4; 
+    color: #000;
+}
+
+/* --- Area Atas --- */
+.nav-1 {
+    background-color: #bc890f; /* Kuning gelap / kecoklatan */
+    height: 30px;
+}
+
+.nav-2 {
+    background-color: #619cd8; /* Biru muda */
+    height: 50px;
+}
+
+.slider {
+    background-color: #ed7d31; /* Oranye */
+    height: 200px;
+}
+
+/* --- Area Tengah (Main Content & Sidebar) --- */
+.main-content {
+    display: flex;
+    gap: 10px; /* Jarak antara Content dan Sidebar */
+}
+
+/* Kolom Kiri (Content) */
+.content-wrapper {
+    flex: 1.8; /* Lebar porsi lebih besar */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.content-1, .content-2, .content-3 {
+    background-color: #ffda67; /* Kuning terang */
+    height: 200px;
+}
+
+/* Kolom Kanan (Sidebar) */
+.sidebar-wrapper {
+    flex: 1; /* Lebar porsi lebih kecil */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sidebar-1 {
+    background-color: #a9d08e; /* Hijau muda */
+    flex: 1; 
+    min-height: 250px;
+}
+
+.sidebar-2 {
+    background-color: #a9d08e; /* Hijau muda */
+    flex: 1;
+    min-height: 350px; /* Sidebar 2 sedikit lebih panjang */
+}
+
+/* --- Area Bawah (Footer) --- */
+.footer-1 {
+    background-color: #c05a1b; /* Oranye gelap */
+    height: 150px;
+}
+
+.footer-2 {
+    background-color: #723e16; /* Cokelat tua */
+    height: 30px;
+}

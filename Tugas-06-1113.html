@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas 06 - 1113</title>
+    <link rel="stylesheet" href="Tugas-06-1113.css">
+    <script>
+        // === PROSES JAVASCRIPT 1: Greeting alert saat halaman dimuat ===
+        function tampilkanSalam() {
+            var nama = prompt("Masukkan nama Anda:", "Pengunjung");
+            if (nama != null && nama != "") {
+                document.getElementById("greeting-text").innerHTML = "Selamat Datang, " + nama + "!";
+            } else {
+                document.getElementById("greeting-text").innerHTML = "Selamat Datang, Pengunjung!";
+            }
+        }
+
+        // === PROSES JAVASCRIPT 2: Ganti konten slider ===
+        var slideIndex = 0;
+        var slides = [
+            " Selamat Datang di Portal Belajar JavaScript!",
+            " Pelajari Dasar-Dasar Pemrograman Web",
+            " Latihan Membuat Website Interaktif",
+            " Sudah gak usah penecet lagi",
+            " ku bilang gak usah pencet lagi",
+            " ngeyel amat",
+            " udah woi",
+            " capek mikir kata katanya",
+            " serah lu dah"
+        ];
+
+        function gantiSlide() {
+            slideIndex++;
+            if (slideIndex >= slides.length) {
+                slideIndex = 0;
+            }
+            document.getElementById("slider-text").innerHTML = slides[slideIndex];
+        }
+
+        // === PROSES JAVASCRIPT 3: Kalkulator sederhana ===
+        function hitung() {
+            var bil1 = parseFloat(document.getElementById("bilangan1").value);
+            var bil2 = parseFloat(document.getElementById("bilangan2").value);
+            var operasi = document.getElementById("operasi").value;
+            var hasil = 0;
+
+            if (isNaN(bil1) || isNaN(bil2)) {
+                document.getElementById("hasil-hitung").innerHTML = "! Masukkan angka yang valid!";
+                return;
+            }
+
+            switch (operasi) {
+                case "tambah":
+                    hasil = bil1 + bil2;
+                    document.getElementById("hasil-hitung").innerHTML = "Hasil: " + bil1 + " + " + bil2 + " = " + hasil;
+                    break;
+                case "kurang":
+                    hasil = bil1 - bil2;
+                    document.getElementById("hasil-hitung").innerHTML = "Hasil: " + bil1 + " - " + bil2 + " = " + hasil;
+                    break;
+                case "kali":
+                    hasil = bil1 * bil2;
+                    document.getElementById("hasil-hitung").innerHTML = "Hasil: " + bil1 + " × " + bil2 + " = " + hasil;
+                    break;
+                case "bagi":
+                    if (bil2 == 0) {
+                        document.getElementById("hasil-hitung").innerHTML = "! Tidak bisa membagi dengan nol!";
+                        return;
+                    }
+                    hasil = bil1 / bil2;
+                    document.getElementById("hasil-hitung").innerHTML = "Hasil: " + bil1 + " ÷ " + bil2 + " = " + hasil;
+                    break;
+            }
+        }
+    </script>
+</head>
+
+<body onload="tampilkanSalam()">
+    <div class="layout-container">
+        <header class="nav-1">
+            <span> Tugas 06 - Pemrograman Web</span>
+        </header>
+
+        <nav class="nav-2">
+            <span id="greeting-text">Selamat Datang!</span>
+        </nav>
+
+        <section class="slider" onclick="gantiSlide()">
+            <p id="slider-text">Selamat Datang di Portal Belajar JavaScript!</p>
+            <p class="slider-hint">(Klik untuk ganti slide)</p>
+        </section>
+
+        <main class="main-content">
+            <div class="content-wrapper">
+                <article class="content-1">
+                    <div class="article-inner">
+                        <h3> Tentang JavaScript</h3>
+                        <p>JavaScript adalah bahasa pemrograman yang digunakan untuk membuat halaman web menjadi
+                            interaktif dan dinamis.</p>
+                    </div>
+                </article>
+                <article class="content-2">
+                    <div class="article-inner">
+                        <h3> Fitur JavaScript</h3>
+                        <ul>
+                            <li>Manipulasi DOM (innerHTML)</li>
+                            <li>Event Handling (onclick, onload)</li>
+                            <li>Dialog (alert, prompt, confirm)</li>
+                        </ul>
+                    </div>
+                </article>
+                <article class="content-3">
+                    <div class="article-inner">
+                        <h3> Contoh Penggunaan</h3>
+                        <p>Pada halaman ini terdapat 3 proses JavaScript: Greeting dengan prompt, Slider interaktif, dan
+                            Kalkulator sederhana.</p>
+                    </div>
+                </article>
+            </div>
+
+            <aside class="sidebar-wrapper">
+                <div class="sidebar-1">
+                    <div class="sidebar-inner">
+                        <h3> Kalkulator</h3>
+                        <div class="calc-form">
+                            <input type="number" id="bilangan1" placeholder="Bilangan 1">
+                            <select id="operasi">
+                                <option value="tambah">+ Tambah</option>
+                                <option value="kurang">- Kurang</option>
+                                <option value="kali">× Kali</option>
+                                <option value="bagi">÷ Bagi</option>
+                            </select>
+                            <input type="number" id="bilangan2" placeholder="Bilangan 2">
+                            <button onclick="hitung()">Hitung</button>
+                        </div>
+                        <p id="hasil-hitung" class="hasil-box">Hasil akan muncul di sini</p>
+                    </div>
+                </div>
+                <div class="sidebar-2">
+                    <div class="sidebar-inner">
+                        <h3> Info Tugas</h3>
+                        <p><strong>Nama:</strong> Riyan</p>
+                        <p><strong>NIM:</strong> 24.83.1113</p>
+                        <p><strong>Mata Kuliah:</strong> Pemrograman Web</p>
+                        <p><strong>Topik:</strong> Pengenalan JavaScript</p>
+                        <hr>
+                        <p><em>3 Proses JavaScript:</em></p>
+                        <ol>
+                            <li>Prompt + innerHTML (Greeting)</li>
+                            <li>Event onclick (Slider)</li>
+                            <li>Switch-case (Kalkulator)</li>
+                        </ol>
+                    </div>
+                </div>
+            </aside>
+        </main>
+
+        <footer class="footer-1">
+            <span>© 2026 - Pemrograman Web - Universitas Amikom Yogyakarta</span>
+        </footer>
+
+        <footer class="footer-2">
+            <span>Muhammad Koprawi - Teknik Komputer</span>
+        </footer>
+    </div>
+</body>
+
+</html>

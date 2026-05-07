@@ -1,0 +1,667 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+
+/* ===== CSS RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-primary: #0a0b0f;
+    --bg-secondary: #12141a;
+    --bg-card: rgba(20, 22, 30, 0.85);
+    --bg-card-hover: rgba(30, 33, 45, 0.95);
+    --accent-orange: #e8731e;
+    --accent-orange-glow: rgba(232, 115, 30, 0.4);
+    --accent-gold: #d4a017;
+    --accent-red: #c0392b;
+    --text-primary: #f0ece4;
+    --text-secondary: #8a8d97;
+    --text-muted: #555860;
+    --border-color: rgba(232, 115, 30, 0.2);
+    --border-glow: rgba(232, 115, 30, 0.5);
+    --glass-bg: rgba(15, 17, 23, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.06);
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: 'Rajdhani', sans-serif;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    min-height: 100vh;
+    background-image:
+        radial-gradient(ellipse at 20% 50%, rgba(232, 115, 30, 0.03) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(212, 160, 23, 0.02) 0%, transparent 50%);
+}
+
+/* ===== LAYOUT CONTAINER ===== */
+.layout-container {
+    width: 100%;
+    max-width: 1400px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* ===== NAVIGATION BAR ===== */
+.nav-1 {
+    background: linear-gradient(90deg, var(--bg-secondary), rgba(232, 115, 30, 0.15), var(--bg-secondary));
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+}
+
+.nav-2 {}
+
+.nav-2::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+    animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        left: -100%;
+    }
+
+    100% {
+        left: 200%;
+    }
+}
+
+/* ===== HERO SLIDER ===== */
+.slider {
+    background: var(--bg-card);
+    height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    cursor: pointer;
+    border-radius: 8px;
+    border: 1px solid var(--glass-border);
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s;
+    padding: 30px;
+}
+
+.slider:hover {
+    border-color: var(--border-glow);
+}
+
+.slider-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://game.intel.com/wp-content/uploads/2024/11/Arena-Breakout-Infinite-Season-Web-1920x1080-2-1024x576.jpg');
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+    transition: transform 0.6s ease;
+}
+
+.slider:hover .slider-bg {
+    transform: scale(1.05);
+}
+
+.slider-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(10, 11, 15, 0.95) 0%, rgba(10, 11, 15, 0.4) 50%, rgba(10, 11, 15, 0.2) 100%);
+    z-index: 1;
+}
+
+.slider-content {
+    position: relative;
+    z-index: 2;
+}
+
+#slider-text {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 0 20px rgba(232, 115, 30, 0.3);
+    margin-bottom: 5px;
+}
+
+.slider-hint {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-style: italic;
+    letter-spacing: 1px;
+}
+
+/* ===== MAIN CONTENT GRID ===== */
+.main-content {
+    display: flex;
+    gap: 8px;
+}
+
+/* ===== LEFT COLUMN (Content) ===== */
+.content-wrapper {
+    flex: 1.8;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* --- Small Cards (Weapon, Map, Boss) --- */
+.card-row {
+    display: flex;
+    gap: 8px;
+    height: 240px;
+}
+
+.card-label {
+    flex: 1;
+    background: var(--bg-card);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.card-label:hover {
+    border-color: var(--accent-orange);
+    background: var(--bg-card-hover);
+    box-shadow: 0 0 25px rgba(232, 115, 30, 0.15);
+}
+
+.card-label h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent-orange);
+    margin-bottom: 5px;
+}
+
+.card-label p {
+    font-size: 12px;
+    color: var(--text-secondary);
+    text-align: center;
+    line-height: 1.4;
+}
+
+.card-icon {
+    flex: 1;
+    border-radius: 8px;
+    border: 1px solid var(--glass-border);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-icon-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.4s ease;
+    z-index: 0;
+}
+
+.card-icon-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 11, 15, 0.3);
+    z-index: 1;
+    transition: background 0.3s;
+}
+
+.card-icon:hover .card-icon-overlay {
+    background: rgba(10, 11, 15, 0.1);
+}
+
+.card-icon img {
+    width: 85%;
+    height: 85%;
+    object-fit: contain;
+    position: relative;
+    z-index: 2;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.5));
+}
+
+.card-icon:hover img {
+    transform: translateY(-12px) scale(1.08);
+}
+
+.card-icon::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--accent-orange), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: 3;
+}
+
+.card-icon:hover::after {
+    opacity: 1;
+}
+
+/* Background variants for each card row */
+.weapon-row .card-icon .card-icon-bg {
+    background-image: url('https://static0.thegamerimages.com/wordpress/wp-content/uploads/wm/2026/01/arena-breakout-infinite-weapon-tier-list-1.jpg?q=70&fit=crop&w=1600&h=900&dpr=1');
+}
+
+.map-row .card-icon .card-icon-bg {
+    background-image: url('https://arenabreakout-infinite.com/wp-content/uploads/2024/06/Arena-Breakout-Infinite-Lockdown-Zones.jpg');
+    filter: blur(3px) brightness(0.5);
+}
+
+.boss-row .card-icon .card-icon-bg {
+    background-image: url('https://game.intel.com/wp-content/uploads/2024/11/Arena-Breakout-Infinite-Season-Web-1920x1080-2-1024x576.jpg');
+    filter: blur(3px) brightness(0.4);
+}
+
+.card-icon:hover .card-icon-bg {
+    transform: scale(1.1);
+}
+
+/* --- Large Interactive Card --- */
+.content-large {
+    background: var(--bg-card);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    min-height: 200px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.content-large-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('assets/hero.png');
+    background-size: cover;
+    background-position: center 30%;
+    z-index: 0;
+    transition: transform 0.6s ease;
+}
+
+.content-large:hover .content-large-bg {
+    transform: scale(1.05);
+}
+
+.content-large-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(10, 11, 15, 0.95) 0%, rgba(10, 11, 15, 0.5) 40%, rgba(232, 115, 30, 0.05) 100%);
+    z-index: 1;
+}
+
+.content-large-content {
+    position: relative;
+    z-index: 2;
+}
+
+.content-large h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent-orange);
+    margin-bottom: 8px;
+}
+
+.content-large p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.content-large:hover {
+    border-color: var(--accent-orange);
+    box-shadow: 0 0 30px rgba(232, 115, 30, 0.1);
+}
+
+/* Particle canvas inside large card */
+#particleCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* ===== RIGHT COLUMN (Sidebar) ===== */
+.sidebar-wrapper {
+    flex: 1.3;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* --- Season Card --- */
+.sidebar-inner h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent-orange);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.sidebar-inner h3::before {
+    content: '';
+    width: 4px;
+    height: 18px;
+    background: var(--accent-orange);
+    border-radius: 2px;
+}
+
+.season-selector {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+    margin-bottom: 15px;
+}
+
+.season-btn {
+    background: rgba(232, 115, 30, 0.08);
+    border: 1px solid rgba(232, 115, 30, 0.15);
+    border-radius: 4px;
+    color: var(--text-secondary);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 4px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    text-align: center;
+}
+
+.season-btn:hover {
+    background: rgba(232, 115, 30, 0.2);
+    border-color: var(--accent-orange);
+    color: var(--accent-orange);
+    transform: translateY(-2px);
+}
+
+.season-btn.active {
+    background: linear-gradient(135deg, rgba(232, 115, 30, 0.3), rgba(212, 90, 10, 0.2));
+    border-color: var(--accent-orange);
+    color: var(--accent-orange);
+    box-shadow: 0 0 12px rgba(232, 115, 30, 0.2);
+}
+
+.season-desc {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--glass-border);
+    border-radius: 6px;
+    padding: 15px;
+    flex: 1;
+    max-height: 200px;
+    overflow-y: auto;
+    transition: all 0.3s ease;
+}
+
+/* Custom scrollbar for season description */
+.season-desc::-webkit-scrollbar {
+    width: 4px;
+}
+
+.season-desc::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 2px;
+}
+
+.season-desc::-webkit-scrollbar-thumb {
+    background: var(--accent-orange);
+    border-radius: 2px;
+}
+
+.season-desc h4 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 13px;
+    color: var(--accent-gold);
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+}
+
+.season-desc p {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.season-desc .season-date {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 8px;
+    font-style: italic;
+}
+
+/* --- Statistics Card --- */
+.sidebar-2 {
+    background: var(--bg-card);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    flex: 1.2;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 12px;
+    flex: 1;
+}
+
+.stat-item {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--glass-border);
+    border-radius: 6px;
+    padding: 12px;
+    text-align: center;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.stat-item:hover {
+    border-color: var(--accent-orange);
+    background: rgba(232, 115, 30, 0.05);
+    transform: translateY(-2px);
+}
+
+.stat-value {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--accent-orange);
+    line-height: 1;
+    margin-bottom: 4px;
+    transition: all 0.5s ease;
+}
+
+.stat-label {
+    font-size: 11px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Animated bar for stats */
+.stat-bar {
+    width: 100%;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 2px;
+    margin-top: 8px;
+    overflow: hidden;
+}
+
+.stat-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-orange), var(--accent-gold));
+    border-radius: 2px;
+    transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ===== FOOTER ===== */
+.footer-1 {
+    background: linear-gradient(90deg, var(--bg-secondary), rgba(232, 115, 30, 0.1), var(--bg-secondary));
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    color: var(--text-secondary);
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.footer-2 {
+    background: linear-gradient(90deg, rgba(232, 115, 30, 0.6), rgba(212, 90, 10, 0.8));
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.7;
+    }
+}
+
+@keyframes countUp {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.fade-in {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent-orange);
+    border-radius: 3px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .main-content {
+        flex-direction: column;
+    }
+
+    .card-row {
+        height: auto;
+        flex-direction: column;
+    }
+
+    .card-icon {
+        min-height: 120px;
+    }
+
+    .season-selector {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

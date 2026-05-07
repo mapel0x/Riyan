@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="League of Legends - Game MOBA terpopuler di dunia. Jelajahi champion, berita terbaru, dan dunia Runeterra.">
+  <title>League of Legends - Runeterra Awaits</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ========== NAVIGASI 1 (Top Bar) ========== -->
+  <nav class="nav-top" id="nav-top">
+    <div class="nav-top-inner">
+      <a href="#">Riot Games</a>
+      <a href="#">Valorant</a>
+      <a href="#">Teamfight Tactics</a>
+      <a href="#">Wild Rift</a>
+      <a href="#">Legends of Runeterra</a>
+      <a href="#">Esports</a>
+    </div>
+  </nav>
+
+  <!-- ========== NAVIGASI 2 (Main Nav) ========== -->
+  <nav class="nav-main" id="nav-main">
+    <div class="nav-main-inner">
+      <a href="#" class="nav-logo">LEAGUE OF LEGENDS</a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#champions">Champions</a></li>
+        <li><a href="#news">Berita</a></li>
+        <li><a href="#lore">Lore</a></li>
+        <li><a href="#rankings">Peringkat</a></li>
+        <li><a href="#" class="nav-cta">Main Sekarang</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ========== SLIDER (Hero Section) ========== -->
+  <section class="hero-slider" id="hero-slider">
+    <div class="slide active" id="slide-1">
+      <img src="images/hero-banner.png" alt="League of Legends Epic Battle">
+      <div class="slide-overlay">
+        <h1>Rise of the Sentinels</h1>
+        <p>Bergabunglah dengan jutaan pemain di seluruh dunia dalam pertempuran epik di Summoner's Rift</p>
+        <a href="#" class="btn-hero">Main Gratis</a>
+      </div>
+    </div>
+    <div class="slide" id="slide-2">
+      <img src="images/champion-mage.png" alt="Champion Mage Showcase">
+      <div class="slide-overlay">
+        <h1>Season 2026</h1>
+        <p>Season baru telah dimulai! Item baru, perubahan peta, dan mekanik gameplay yang segar menanti</p>
+        <a href="#" class="btn-hero">Lihat Update</a>
+      </div>
+    </div>
+    <div class="slide" id="slide-3">
+      <img src="images/champion-warrior.png" alt="Champion Warrior">
+      <div class="slide-overlay">
+        <h1>World Championship</h1>
+        <p>Saksikan tim terbaik dunia bertarung memperebutkan gelar juara di Worlds 2026</p>
+        <a href="#" class="btn-hero">Tonton Live</a>
+      </div>
+    </div>
+    <div class="slider-dots" id="slider-dots">
+      <div class="slider-dot active" data-slide="0"></div>
+      <div class="slider-dot" data-slide="1"></div>
+      <div class="slider-dot" data-slide="2"></div>
+    </div>
+  </section>
+
+  <!-- ========== MAIN CONTENT AREA ========== -->
+  <main class="main-content" id="main-content">
+
+    <!-- CONTENT 1 - Champions -->
+    <section class="content-section" id="champions">
+      <h2 class="section-title">⚔️ Champion Terpopuler</h2>
+      <div class="champion-grid" id="champion-grid">
+        <div class="champion-card">
+          <img src="images/champion-mage.png" alt="Syndra">
+          <div class="champion-card-info">
+            <h3>Syndra</h3>
+            <span>Mage • Mid Lane</span>
+          </div>
+        </div>
+        <div class="champion-card">
+          <img src="images/champion-warrior.png" alt="Darius">
+          <div class="champion-card-info">
+            <h3>Darius</h3>
+            <span>Fighter • Top Lane</span>
+          </div>
+        </div>
+        <div class="champion-card">
+          <img src="images/champion-assassin.png" alt="Zed">
+          <div class="champion-card-info">
+            <h3>Zed</h3>
+            <span>Assassin • Mid Lane</span>
+          </div>
+        </div>
+        <div class="champion-card">
+          <img src="images/champion-warrior.png" alt="Garen">
+          <div class="champion-card-info">
+            <h3>Garen</h3>
+            <span>Tank • Top Lane</span>
+          </div>
+        </div>
+        <div class="champion-card">
+          <img src="images/champion-assassin.png" alt="Akali">
+          <div class="champion-card-info">
+            <h3>Akali</h3>
+            <span>Assassin • Mid Lane</span>
+          </div>
+        </div>
+        <div class="champion-card">
+          <img src="images/champion-mage.png" alt="Lux">
+          <div class="champion-card-info">
+            <h3>Lux</h3>
+            <span>Mage • Support</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SIDEBAR 1 - Rankings (spans 2 rows) -->
+    <aside class="sidebar-section sidebar-1" id="rankings">
+      <h2 class="section-title">🏆 Top Players</h2>
+      <div class="rank-list" id="rank-list">
+        <div class="rank-item">
+          <div class="rank-pos">1</div>
+          <div class="rank-info">
+            <h4>Faker</h4>
+            <span>Challenger • KR</span>
+          </div>
+          <span class="rank-wr wr-high">78% WR</span>
+        </div>
+        <div class="rank-item">
+          <div class="rank-pos">2</div>
+          <div class="rank-info">
+            <h4>Chovy</h4>
+            <span>Challenger • KR</span>
+          </div>
+          <span class="rank-wr wr-high">74% WR</span>
+        </div>
+        <div class="rank-item">
+          <div class="rank-pos">3</div>
+          <div class="rank-info">
+            <h4>Caps</h4>
+            <span>Challenger • EUW</span>
+          </div>
+          <span class="rank-wr wr-high">72% WR</span>
+        </div>
+        <div class="rank-item">
+          <div class="rank-pos">4</div>
+          <div class="rank-info">
+            <h4>ShowMaker</h4>
+            <span>Challenger • KR</span>
+          </div>
+          <span class="rank-wr wr-mid">69% WR</span>
+        </div>
+        <div class="rank-item">
+          <div class="rank-pos">5</div>
+          <div class="rank-info">
+            <h4>Zeus</h4>
+            <span>Challenger • KR</span>
+          </div>
+          <span class="rank-wr wr-mid">67% WR</span>
+        </div>
+        <div class="rank-item">
+          <div class="rank-pos">6</div>
+          <div class="rank-info">
+            <h4>Gumayusi</h4>
+            <span>Challenger • KR</span>
+          </div>
+          <span class="rank-wr wr-mid">66% WR</span>
+        </div>
+        <div class="rank-item">
+          <div class="rank-pos">7</div>
+          <div class="rank-info">
+            <h4>Ruler</h4>
+            <span>Challenger • KR</span>
+          </div>
+          <span class="rank-wr wr-mid">65% WR</span>
+        </div>
+        <div class="rank-item">
+          <div class="rank-pos">8</div>
+          <div class="rank-info">
+            <h4>Keria</h4>
+            <span>Challenger • KR</span>
+          </div>
+          <span class="rank-wr wr-mid">64% WR</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- CONTENT 2 - News -->
+    <section class="content-section" id="news">
+      <h2 class="section-title">📰 Berita Terbaru</h2>
+      <div class="news-list" id="news-list">
+        <div class="news-item">
+          <div class="news-date">
+            <span class="day">21</span>
+            <span class="month">Apr</span>
+          </div>
+          <div class="news-content">
+            <span class="news-tag tag-patch">Patch Notes</span>
+            <h3>Patch 14.8 - Perubahan Besar di Meta</h3>
+            <p>Update terbaru membawa nerf pada item ADC dan buff pada fighter top lane yang mengubah meta secara signifikan.</p>
+          </div>
+        </div>
+        <div class="news-item">
+          <div class="news-date">
+            <span class="day">18</span>
+            <span class="month">Apr</span>
+          </div>
+          <div class="news-content">
+            <span class="news-tag tag-event">Event</span>
+            <h3>Event Baru: Shadow Isles Rising</h3>
+            <p>Event eksklusif dengan skin limited edition dan misi spesial. Dapatkan hadiah langka selama event berlangsung!</p>
+          </div>
+        </div>
+        <div class="news-item">
+          <div class="news-date">
+            <span class="day">15</span>
+            <span class="month">Apr</span>
+          </div>
+          <div class="news-content">
+            <span class="news-tag tag-esports">Esports</span>
+            <h3>MSI 2026 - Jadwal & Tim Peserta</h3>
+            <p>Mid-Season Invitational segera dimulai! Lihat jadwal lengkap dan prediksi para ahli untuk turnamen tahun ini.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTENT 3 - Lore -->
+    <section class="content-section" id="lore">
+      <h2 class="section-title">📖 Dunia Runeterra</h2>
+      <div class="lore-content">
+        <img src="images/champion-assassin.png" alt="Shadow Isles">
+        <div class="lore-text">
+          <p>Runeterra adalah dunia magis yang luas, dipenuhi oleh berbagai benua, kerajaan, dan misteri yang menanti untuk dijelajahi. Dari kota megah Demacia hingga kedalaman Shadow Isles yang menyeramkan.</p>
+          <p>Setiap champion memiliki cerita unik yang terjalin dengan sejarah dunia ini. Temukan rahasia di balik kekuatan mereka dan konflik yang membentuk Runeterra.</p>
+          <a href="#" class="btn-readmore">Jelajahi Lore</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SIDEBAR 2 - Live Streams -->
+    <aside class="sidebar-section" id="streams">
+      <h2 class="section-title">🔴 Live Streams</h2>
+      <div class="stream-list" id="stream-list">
+        <div class="stream-item">
+          <div class="stream-avatar">FK</div>
+          <div class="stream-info">
+            <h4>Faker</h4>
+            <span>Solo Queue Ranked</span>
+          </div>
+          <span class="stream-live">LIVE</span>
+        </div>
+        <div class="stream-item">
+          <div class="stream-avatar">TL</div>
+          <div class="stream-info">
+            <h4>Tyler1</h4>
+            <span>ADC to Challenger</span>
+          </div>
+          <span class="stream-live">LIVE</span>
+        </div>
+        <div class="stream-item">
+          <div class="stream-avatar">CP</div>
+          <div class="stream-info">
+            <h4>Caps</h4>
+            <span>Mid Lane Gameplay</span>
+          </div>
+          <span class="stream-live">LIVE</span>
+        </div>
+        <div class="stream-item">
+          <div class="stream-avatar">CB</div>
+          <div class="stream-info">
+            <h4>Caedrel</h4>
+            <span>LEC Watch Party</span>
+          </div>
+          <span class="stream-live">LIVE</span>
+        </div>
+      </div>
+    </aside>
+
+  </main>
+
+  <!-- ========== FOOTER 1 (Main Footer) ========== -->
+  <footer class="footer-main" id="footer-main">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h3>League of Legends</h3>
+        <p>Game MOBA terpopuler di dunia dengan lebih dari 150 champion unik. Bergabunglah dengan komunitas global dan buktikan kemampuanmu di Summoner's Rift.</p>
+        <div class="social-links">
+          <a href="#" class="social-link" title="Twitter">𝕏</a>
+          <a href="#" class="social-link" title="YouTube">▶</a>
+          <a href="#" class="social-link" title="Discord">💬</a>
+          <a href="#" class="social-link" title="Instagram">📷</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h3>Game</h3>
+        <ul>
+          <li><a href="#">Champions</a></li>
+          <li><a href="#">Patch Notes</a></li>
+          <li><a href="#">Items</a></li>
+          <li><a href="#">Maps</a></li>
+          <li><a href="#">Game Modes</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Esports</h3>
+        <ul>
+          <li><a href="#">Worlds 2026</a></li>
+          <li><a href="#">MSI</a></li>
+          <li><a href="#">LCK</a></li>
+          <li><a href="#">LEC</a></li>
+          <li><a href="#">LCS</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Support</h3>
+        <ul>
+          <li><a href="#">Pusat Bantuan</a></li>
+          <li><a href="#">Status Server</a></li>
+          <li><a href="#">Report Bug</a></li>
+          <li><a href="#">Kebijakan Privasi</a></li>
+          <li><a href="#">Syarat Layanan</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== FOOTER 2 (Bottom Bar) ========== -->
+  <div class="footer-bottom" id="footer-bottom">
+    <p>&copy; 2026 Riot Games, Inc. All Rights Reserved. League of Legends and Riot Games are trademarks of <a href="#">Riot Games, Inc.</a></p>
+  </div>
+
+  <!-- ========== JAVASCRIPT ========== -->
+  <script>
+    // Slider functionality
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.slider-dot');
+    let currentSlide = 0;
+    let slideInterval;
+
+    function showSlide(index) {
+      slides.forEach(s => s.classList.remove('active'));
+      dots.forEach(d => d.classList.remove('active'));
+      currentSlide = index;
+      slides[currentSlide].classList.add('active');
+      dots[currentSlide].classList.add('active');
+    }
+
+    function nextSlide() {
+      showSlide((currentSlide + 1) % slides.length);
+    }
+
+    function startSlider() {
+      slideInterval = setInterval(nextSlide, 5000);
+    }
+
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        clearInterval(slideInterval);
+        showSlide(parseInt(dot.dataset.slide));
+        startSlider();
+      });
+    });
+
+    startSlider();
+
+    // Scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.content-section, .sidebar-section').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+      observer.observe(el);
+    });
+
+    // Navbar scroll effect
+    const navMain = document.querySelector('.nav-main');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navMain.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.5)';
+      } else {
+        navMain.style.boxShadow = 'none';
+      }
+    });
+  </script>
+
+</body>
+</html>

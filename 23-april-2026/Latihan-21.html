@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>seleksi kondisi</title>
+</head>
+<body>
+    <script>
+        var nilai = prompt("Masukkan Nilai (0 .. 100): ", 0);
+        var hasil = "";
+        if(nilai >= 70)
+        {
+            hasil = "Lulus";
+        } else
+        {
+            hasil = "Mengulang";
+        }
+
+        document.write("Hasil dari nilai anda : " + hasil);
+
+        var pilihan = prompt("Masukkan Pilihan (1-3): ", 0);
+        switch(pilihan)
+        {
+            case "1" :
+            {
+                document.write("ini pilihan no satu");
+                break;
+            }
+            case "2" :
+            {
+                document.write("ini pilihan no dua");
+                break;
+            }
+            case "3" :
+            {
+                document.write("ini pilihan no tiga");
+                break;
+            }
+            default :
+            {
+                document.write("pilihan tidak tersedia");
+            }
+        }
+    </script>
+
+</body>
+</html>

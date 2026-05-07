@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Arena Breakout - Tactical FPS Game Portal. Explore weapons, maps, bosses, seasons, and player statistics.">
+    <title>Tugas 06 - Arena Breakout</title>
+    <link rel="stylesheet" href="Tugas-06-1113.css">
+
+    <script>
+        // === DATA SEASON ARENA BREAKOUT ===
+        var seasons = [
+            { name: "Season 1 - Global Launch", desc: "Musim pembuka yang memperkenalkan mekanik inti extraction shooter hardcore. Pemain mulai menjelajahi peta Farm, Valley, dan Northridge. Fokus utama adalah pengenalan sistem kesehatan realistis dan kustomisasi senjata (Gunsmith) yang mendalam.", date: "14 Juli 2023" },
+            { name: "Season 2 - Battle For The Port", desc: "Menambah intensitas pertempuran kota dengan peta Port yang penuh lorong sempit dan gedung tinggi. Musim ini memperkenalkan Storm Warning, mode cuaca ekstrem (hujan dan kabut) yang membatasi jarak pandang dan meredam suara langkah kaki.", date: "27 Oktober 2023" },
+            { name: "Season 3 - Enter The Vault", desc: "Fokus pada pertempuran jarak dekat (CQC) di peta TV Station yang sangat vertikal. Pemain harus memilih faksi (Colom atau Tevila) untuk memperebutkan rahasia di dalam brankas (Vault) sambil menghadapi bos baru seperti Kurt dan Rolf.", date: "19 Januari 2024" },
+            { name: "Season 4 - Into The Fog Of War", desc: "Memperdalam konflik faksi antara Blackgold dan Gresk di wilayah Northridge. Musim ini menghadirkan pertempuran skala besar 12v12 dan kolaborasi ikonik dengan Bruce Lee.", date: "11 April 2024" },
+            { name: "Season 5 - Road to Gold", desc: "Menandai satu tahun rilis global dengan memperkenalkan peta Mine, wilayah tambang raksasa yang luas. Untuk pertama kalinya, kendaraan (mobil) ditambahkan untuk membantu mobilitas di medan yang sangat lebar tersebut.", date: "25 Juli 2024" },
+            { name: "Season 6 - Operation Blackout", desc: "Musim yang lebih fokus pada cerita (Lore) dengan penambahan Story Mode. Terdapat perombakan sistem kunci (Key System) dan pengenalan mekanik baru untuk infiltrasi yang lebih taktis.", date: "Oktober 2024" },
+            { name: "Season 7 - Secured Gear, No Fear", desc: "Memperkenalkan mode Secure Ops, sebuah sistem eksperimental yang memungkinkan pemain membawa perlengkapan tertentu tanpa takut hilang saat mati, bertujuan untuk membantu pemain baru beradaptasi dengan risiko tinggi game ini.", date: "Januari 2025" },
+            { name: "Season 8 - Frozen Frontline", desc: "Menambahkan variasi lingkungan baru berupa salju di Northridge. Pemain harus beradaptasi dengan visibilitas rendah akibat badai salju dan diperkenalkan mode 'Boss Play' di mana pemain bisa berperan sebagai bos area.", date: "Maret 2025" },
+            { name: "Season 9 - No Rules In The Storm", desc: "Fokus pada elemen teknologi militer modern. Menghadirkan alat-alat taktis baru seperti Drone untuk pengintaian dan Bio-scanner untuk mendeteksi lawan di balik kabut tebal Farm.", date: "Juli 2025" },
+            { name: "Season 10 - Living Legend", desc: "Menampilkan peningkatan pada sistem ekonomi game dengan jaminan munculnya item merah (High-tier loot) di lokasi tertentu. Karakter kontak baru, Talia, memberikan misi-misi yang lebih menantang.", date: "Oktober 2025" },
+            { name: "Season 11 - Dust to Gold", desc: "Memperkenalkan kelas senjata baru seperti LMG (Light Machine Gun) dan senapan lever-action. Event utamanya berkisar pada pencarian emas murni di wilayah perbatasan yang berbahaya.", date: "Januari 2026" },
+            { name: "Season 12 - Operation Unbound", desc: "Perombakan total pada peta Valley yang diperluas hingga 47% lebih besar. Menghadirkan medan rawa-rawa, efek riak air yang memengaruhi gerakan, serta senjata faksi baru seperti G28 dan A545.", date: "12 Maret 2026" }
+        ];
+
+        // === DATA STATISTIK PLAYER PER SEASON ===
+        var stats = [
+            { totalRampasan: "0", kills: "0", Serbuan: "0", Bertahan: "0%", kd: "0.0" },
+            { totalRampasan: "0", kills: "0", Serbuan: "0", Bertahan: "0%", kd: "0.0" },
+            { totalRampasan: "0", kills: "0", Serbuan: "0", Bertahan: "0%", kd: "0.0" },
+            { totalRampasan: "0", kills: "0", Serbuan: "0", Bertahan: "0%", kd: "0.0" },
+            { totalRampasan: "0", kills: "0", Serbuan: "0", Bertahan: "0%", kd: "0.0" },
+            { totalRampasan: "0", kills: "0", Serbuan: "0", Bertahan: "0%", kd: "0.0" },
+            { totalRampasan: "22,5M", kills: "1,3k", Serbuan: "522", Bertahan: "38.5%", kd: "4.3" },
+            { totalRampasan: "105,5M", kills: "3,2k", Serbuan: "1,6k", Bertahan: "28.5%", kd: "2.77" },
+            { totalRampasan: "64,8M", kills: "1,6k", Serbuan: "708", Bertahan: "40,8%", kd: "3.89" },
+            { totalRampasan: "103,M", kills: "1,7k", Serbuan: "835", Bertahan: "40.1%", kd: "2.51" },
+            { totalRampasan: "103,9M", kills: "1,4k", Serbuan: "606", Bertahan: "44.4%", kd: "3.15" },
+            { totalRampasan: "72,8M", kills: "1k", Serbuan: "303", Bertahan: "45.9%", kd: "4.61" },
+        ];
+
+        var currentSeason = 0;
+
+        // === DATA BOSS ARENA BREAKOUT ===
+        var bossIndex = 0;
+        var bossImgDefault = "https://static.wikia.nocookie.net/arena-breakout-infinite/images/c/cb/Doss_Boss_Intro.webp/revision/latest?cb=20240429181420";
+        var bosses = [
+            { name: "Ajax Jones", lokasi: "Farm", desc: "Bos yang paling sering ditemui. Muncul di Motel, Stables, atau Loading Area bersama 5 pengawal. Mudah dikenali dari baret merahnya dan tidak menggunakan helm.", img: "https://static.wikia.nocookie.net/arena-breakout-infinite/images/8/82/Ajax_Boss_Intro.webp/revision/latest?cb=20240429173308" },
+            { name: "Doss Anthony", lokasi: "Valley", desc: "Pemimpin wilayah Valley yang sering bersembunyi di Seaside Villa. Memiliki jumlah pengawal terbanyak (hingga 10 orang) dan menjatuhkan token Handmade Gold.", img: "https://static.wikia.nocookie.net/arena-breakout-infinite/images/c/cb/Doss_Boss_Intro.webp/revision/latest?cb=20240429181420" },
+            { name: "Fred Lee", lokasi: "Northridge", desc: "Mantan agen yang memimpin pasukan elit di wilayah pegunungan Northridge.", img: bossImgDefault },
+            { name: "Renoir Brady", lokasi: "Armory", desc: "Bos militer yang menjaga area Armory. Menggunakan perlengkapan berat dan taktik agresif di koridor-koridor sempit.", img: "https://static.wikia.nocookie.net/arena-breakout-infinite/images/b/b5/Renoir.png/revision/latest?cb=20240503215515" },
+            { name: "Derwin Pan", lokasi: "Port", desc: "Pemimpin geng kriminal di wilayah pelabuhan (Port). Sering muncul di Guapa Restaurant atau Otoritas Pelabuhan bersama 6-8 pengawal. Dikenal dengan taktik penyergapan dari gedung-gedung bertingkat dan lorong antar kontainer.", img: bossImgDefault },
+            { name: "Kurt, Bernard & Rolf", lokasi: "TV Station", desc: "Tiga bos sekaligus yang menjaga gedung TV Station. Kurt sebagai komandan taktis dan Bernard sebagai penembak jitu.", img: bossImgDefault },
+            { name: "Hecate", lokasi: "Farm (Event)", desc: "Terkadang muncul sebagai bos di Farm menggantikan atau bersamaan dengan Ajax dalam mode tertentu.", img: bossImgDefault },
+            { name: "Maxim", lokasi: "Valley (Season 12)", desc: "Ahli mekanik dan demolisi dari Flag Squad yang menjadi pusat konflik faksi di Season 12: Operation Unbound.", img: bossImgDefault }
+        ];
+
+        // === DATA MAP ARENA BREAKOUT ===
+        var mapIndex = 0;
+        var maps = [
+            { name: "Farm (Pertanian)", rilis: "Rilis S1", desc: "Peta terkecil dan paling ikonik. Dibagi menjadi dua sisi oleh jembatan yang hancur. Pertempuran di sini sangat cepat.", areaKunci: "Motel (tempat paling berdarah dengan loot tinggi) dan Villa" },
+            { name: "Valley (Lembah)", rilis: "Rilis S1 (Remake Besar di S12)", desc: "Lembah yang diapit perbukitan dan menghadap ke laut. Di S12, peta ini diperluas secara masif (versi \"New Valley\") dengan tambahan area rawa-rawa.", areaKunci: "Beach Villa (Vila Tepi Laut) dan Port (Pelabuhan)" },
+            { name: "Northridge (Pegunungan Utara)", rilis: "Rilis S1", desc: "Peta pegunungan yang sangat luas dengan hutan lebat. Jarak antar bangunan sangat jauh, sehingga rotasi pemain sangat krusial di sini.", areaKunci: "Northridge Hotel (bangunan raksasa dengan banyak kamar terkunci) dan Sewage Plant" },
+            { name: "TV Station (Stasiun TV)", rilis: "Rilis S1 (Update S12)", desc: "Peta yang sepenuhnya berada di dalam ruangan (indoor). Sangat sempit, penuh lorong, dan sudut-sudut jebakan. Di S12, lantai baru dibuka untuk memperluas area pertempuran.", areaKunci: "Ruang Arsip, Studio Utama, dan Ruang Kontrol" },
+            { name: "Armory (Gudang Senjata)", rilis: "Rilis S2", desc: "Bekas markas militer bawah tanah yang sangat terjaga. Untuk masuk ke area inti, kamu seringkali harus mengaktifkan sakelar yang akan memicu alarm.", areaKunci: "Bunker Utama dan gudang penyimpanan peluru" },
+            { name: "Port (Pelabuhan)", rilis: "Rilis S3", desc: "Kawasan perkotaan yang kumuh dan padat. Penuh dengan gedung bertingkat yang bisa dimasuki dan lorong-lorong sempit di antara kontainer.", areaKunci: "Guapa Restaurant dan Otoritas Pelabuhan" },
+            { name: "The Mine (Tambang)", rilis: "Rilis S9/S10", desc: "Peta terbesar dalam sejarah Arena Breakout. Karena saking luasnya, pengembang menyediakan kendaraan (mobil) yang bisa dikendarai pemain.", areaKunci: "Pabrik Pengolahan dan area penggalian terbuka" }
+        ];
+
+        function tampilkanBos() {
+            var b = bosses[bossIndex];
+            var titleEl = document.getElementById('boss-title');
+            var descEl = document.getElementById('boss-desc');
+            var imgEl = document.getElementById('boss-img');
+            titleEl.style.opacity = 0;
+            descEl.style.opacity = 0;
+            imgEl.style.opacity = 0;
+            imgEl.style.transform = "scale(0.9)";
+            titleEl.style.transform = "translateY(-5px)";
+            descEl.style.transform = "translateY(5px)";
+            setTimeout(function () {
+                titleEl.innerHTML = '👹 ' + b.name + ' (' + (bossIndex + 1) + '/' + bosses.length + ')';
+                descEl.innerHTML = '📍 ' + b.lokasi + ' — ' + b.desc;
+                imgEl.src = b.img;
+                imgEl.alt = 'Boss - ' + b.name;
+                titleEl.style.opacity = 1;
+                descEl.style.opacity = 1;
+                imgEl.style.opacity = 1;
+                imgEl.style.transform = "scale(1)";
+                titleEl.style.transform = "translateY(0)";
+                descEl.style.transform = "translateY(0)";
+            }, 200);
+            bossIndex++;
+            if (bossIndex >= bosses.length) {
+                bossIndex = 0;
+            }
+        }
+
+        function tampilkanPeta() {
+            var m = maps[mapIndex];
+            var titleEl = document.getElementById('map-title');
+            var descEl = document.getElementById('map-desc');
+            titleEl.style.opacity = 0;
+            descEl.style.opacity = 0;
+            titleEl.style.transform = "translateY(-5px)";
+            descEl.style.transform = "translateY(5px)";
+            setTimeout(function () {
+                titleEl.innerHTML = '🗺️ ' + m.name + ' (' + (mapIndex + 1) + '/' + maps.length + ')';
+                descEl.innerHTML = '<strong>📅 ' + m.rilis + '</strong><br><br>' + m.desc + '<br><br><strong>🎯 Area Kunci:</strong> ' + m.areaKunci;
+                titleEl.style.opacity = 1;
+                descEl.style.opacity = 1;
+                titleEl.style.transform = "translateY(0)";
+                descEl.style.transform = "translateY(0)";
+            }, 200);
+            mapIndex++;
+            if (mapIndex >= maps.length) {
+                mapIndex = 0;
+            }
+        }
+
+        // === PROSES JAVASCRIPT 1: Greeting alert saat halaman dimuat ===
+        function tampilkanSalam() {
+            var nama = prompt("Selamat datang, Operator! Masukkan callsign kamu:", "Ghost");
+            if (nama != null && nama != "") {
+                document.getElementById("greeting-text").innerHTML = "⚔ Welcome, " + nama + " — Ready for Deployment";
+            } else {
+                document.getElementById("greeting-text").innerHTML = "⚔ Welcome, Operator — Ready for Deployment";
+            }
+        }
+
+        // === PROSES JAVASCRIPT 2: Ganti konten slider ===
+        var slideIndex = 0;
+        var slides = [
+            "Patch 12.0: Senapan Serbu A545 & Marksman G28 Resmi Hadir.",
+            "Peta Baru: Perluasan Valley 47% – Jelajahi Wilayah Rawa & Area Baru.",
+            "Bos Baru: Hadapi Maxim dan Pasukan Faksi di Zona Konflik.",
+            "Battle Pass S12: Klaim Skin Quenched Steel M110 & Hadiah Eksklusif.",
+            "Penyesuaian Senjata: Buff Performa SCAR-H & Optimasi Recoil F2000.",
+            "Ranked Season 12: Dominasi Medan Perang dan Kejar Gelar Legend"
+        ];
+
+        function gantiSlide() {
+            slideIndex++;
+            if (slideIndex >= slides.length) {
+                slideIndex = 0;
+            }
+            var textEl = document.getElementById("slider-text");
+            textEl.style.opacity = 0;
+            textEl.style.transform = "translateY(10px)";
+            setTimeout(function () {
+                textEl.innerHTML = slides[slideIndex];
+                textEl.style.opacity = 1;
+                textEl.style.transform = "translateY(0)";
+            }, 300);
+        }
+
+        // === PROSES JAVASCRIPT 3: Season Selector & Statistics ===
+        function selectSeason(index) {
+            currentSeason = index;
+
+            // Update active button
+            var btns = document.querySelectorAll('.season-btn');
+            for (var i = 0; i < btns.length; i++) {
+                btns[i].classList.remove('active');
+            }
+            btns[index].classList.add('active');
+
+            // Update season description with animation
+            var descEl = document.getElementById('season-desc');
+            descEl.style.opacity = 0;
+            descEl.style.transform = "translateY(10px)";
+
+            setTimeout(function () {
+                document.getElementById('season-title').innerHTML = seasons[index].name;
+                document.getElementById('season-text').innerHTML = seasons[index].desc;
+                document.getElementById('season-date').innerHTML = "📅 " + seasons[index].date;
+                descEl.style.opacity = 1;
+                descEl.style.transform = "translateY(0)";
+            }, 250);
+
+            // Update statistics with animation
+            updateStats(index);
+        }
+
+        function updateStats(index) {
+            var s = stats[index];
+            animateValue('stat-total-rampasan', s.totalRampasan);
+            animateValue('stat-kills', s.kills);
+            animateValue('stat-Serbuan', s.Serbuan);
+            animateValue('stat-Bertahan', s.Bertahan);
+            animateValue('stat-kd', s.kd);
+
+            // Update bar charts
+            var playerBars = [0, 0, 0, 0, 0, 0, 21, 100, 61, 98, 98, 69];
+            var killBars = [0, 0, 0, 0, 0, 0, 41, 100, 50, 53, 44, 31];
+            document.getElementById('bar-total-rampasan').style.width = playerBars[index] + '%';
+            document.getElementById('bar-kills').style.width = killBars[index] + '%';
+        }
+
+        function animateValue(id, newValue) {
+            var el = document.getElementById(id);
+            el.style.animation = 'none';
+            el.offsetHeight; // trigger reflow
+            el.style.animation = 'countUp 0.5s ease';
+            el.innerHTML = newValue;
+        }
+
+        // === Particle Effect for Large Card ===
+        function initParticles() {
+            var canvas = document.getElementById('particleCanvas');
+            if (!canvas) return;
+            var ctx = canvas.getContext('2d');
+
+            function resize() {
+                canvas.width = canvas.parentElement.offsetWidth;
+                canvas.height = canvas.parentElement.offsetHeight;
+            }
+            resize();
+            window.addEventListener('resize', resize);
+
+            var particles = [];
+            for (var i = 0; i < 40; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    vx: (Math.random() - 0.5) * 0.5,
+                    vy: -Math.random() * 0.8 - 0.2,
+                    size: Math.random() * 2 + 0.5,
+                    alpha: Math.random() * 0.5 + 0.1
+                });
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                for (var i = 0; i < particles.length; i++) {
+                    var p = particles[i];
+                    p.x += p.vx;
+                    p.y += p.vy;
+                    if (p.y < -10) {
+                        p.y = canvas.height + 10;
+                        p.x = Math.random() * canvas.width;
+                    }
+                    if (p.x < -10 || p.x > canvas.width + 10) {
+                        p.x = Math.random() * canvas.width;
+                    }
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                    ctx.fillStyle = 'rgba(232, 115, 30, ' + p.alpha + ')';
+                    ctx.fill();
+                }
+                requestAnimationFrame(animate);
+            }
+            animate();
+        }
+
+        // Auto slide
+        function autoSlide() {
+            setInterval(function () {
+                gantiSlide();
+            }, 5000);
+        }
+
+        window.onload = function () {
+            tampilkanSalam();
+            selectSeason(11); // Start at latest season
+            initParticles();
+            autoSlide();
+        };
+    </script>
+</head>
+
+<body>
+    <div class="layout-container">
+        <!-- === HEADER / NAV === -->
+        <header class="nav-1">
+            <span>Tugas 06 - Pemrograman Web</span>
+        </header>
+
+        <nav class="nav-2">
+            <span id="greeting-text">ARENA BREAKOUT</span>
+        </nav>
+
+        <!-- === HERO SLIDER === -->
+        <section class="slider" onclick="gantiSlide()" id="hero-slider">
+            <div class="slider-bg"></div>
+            <div class="slider-overlay"></div>
+            <div class="slider-content">
+                <p id="slider-text" style="transition: all 0.3s ease;">🎯 Patch 12.5 — New Weapon: TAC-50 Sniper Rifle
+                </p>
+                <p class="slider-hint">(Klik untuk ganti slide berita)</p>
+            </div>
+        </section>
+
+        <!-- === MAIN CONTENT === -->
+        <main class="main-content">
+            <!-- LEFT COLUMN -->
+            <div class="content-wrapper">
+
+                <!-- Row 1: Weapon -->
+                <div class="card-row weapon-row">
+                    <div class="card-label"
+                        onclick="alert('🔫 Arsenal: 50+ senjata tersedia di Arena Breakout!\nDari Pistol hingga Sniper Rifle, pilih senjata terbaikmu.')">
+                        <h3>⚔ Weapons</h3>
+                        <p>50+ Senjata Tactical. Klik untuk info.</p>
+                    </div>
+                    <div class="card-icon" id="weapon-card">
+                        <div class="card-icon-bg"></div>
+                        <div class="card-icon-overlay"></div>
+                        <img src="assets/weapon.png" alt="Weapon - Assault Rifle">
+                    </div>
+                </div>
+
+                <!-- Row 2: Map -->
+                <div class="card-row map-row">
+                    <div class="card-label" onclick="tampilkanPeta()">
+                        <h3 id="map-title" style="transition: all 0.3s ease;">🗺️ Maps</h3>
+                        <p id="map-desc" style="transition: all 0.3s ease;">7 Peta unik. Klik untuk lihat satu per satu!
+                        </p>
+                    </div>
+                    <div class="card-icon" id="map-card">
+                        <div class="card-icon-bg"></div>
+                        <div class="card-icon-overlay"></div>
+                        <img src="https://arenabreakout-infinite.com/wp-content/uploads/2024/06/Arena-Breakout-Infinite-Lockdown-Zones.jpg"
+                            alt="Map - Operations Zone">
+                    </div>
+                </div>
+
+                <!-- Row 3: Boss -->
+                <div class="card-row boss-row">
+                    <div class="card-label" onclick="tampilkanBos()">
+                        <h3 id="boss-title" style="transition: all 0.3s ease;">👹 Bosses</h3>
+                        <p id="boss-desc" style="transition: all 0.3s ease;">8 Boss mematikan. Klik untuk lihat satu per
+                            satu!</p>
+                    </div>
+                    <div class="card-icon" id="boss-card">
+                        <div class="card-icon-bg"></div>
+                        <div class="card-icon-overlay"></div>
+                        <img id="boss-img"
+                            src="https://static.wikia.nocookie.net/arena-breakout-infinite/images/8/82/Ajax_Boss_Intro.webp/revision/latest?cb=20240429173308"
+                            alt="Boss - Ajax Jones" style="transition: all 0.3s ease;">
+                    </div>
+                </div>
+
+                <!-- Large Interactive Card -->
+                <article class="content-large" id="large-card">
+                    <div class="content-large-bg"></div>
+                    <canvas id="particleCanvas"></canvas>
+                    <div class="content-large-overlay"></div>
+                    <div class="content-large-content">
+                        <h3>🎮 Arena Breakout — Extraction Shooter</h3>
+                        <p>Masuki zona pertempuran, kumpulkan loot bernilai tinggi, dan berhasil keluar hidup-hidup.
+                            Arena Breakout menggabungkan elemen tactical shooter dengan survival looting.
+                            Setiap keputusan menentukan hidupmu. Siap untuk extraction?</p>
+                    </div>
+                </article>
+            </div>
+
+            <!-- RIGHT COLUMN -->
+            <aside class="sidebar-wrapper">
+                <!-- Season Selector -->
+                <div class="sidebar-1">
+                    <div class="sidebar-inner">
+                        <h3>Seasons</h3>
+                        <div class="season-selector" id="season-buttons">
+                            <button class="season-btn" onclick="selectSeason(0)">S1</button>
+                            <button class="season-btn" onclick="selectSeason(1)">S2</button>
+                            <button class="season-btn" onclick="selectSeason(2)">S3</button>
+                            <button class="season-btn" onclick="selectSeason(3)">S4</button>
+                            <button class="season-btn" onclick="selectSeason(4)">S5</button>
+                            <button class="season-btn" onclick="selectSeason(5)">S6</button>
+                            <button class="season-btn" onclick="selectSeason(6)">S7</button>
+                            <button class="season-btn" onclick="selectSeason(7)">S8</button>
+                            <button class="season-btn" onclick="selectSeason(8)">S9</button>
+                            <button class="season-btn" onclick="selectSeason(9)">S10</button>
+                            <button class="season-btn" onclick="selectSeason(10)">S11</button>
+                            <button class="season-btn active" onclick="selectSeason(11)">S12</button>
+                        </div>
+                        <div class="season-desc" id="season-desc" style="transition: all 0.3s ease;">
+                            <h4 id="season-title">Season 12 - Endgame</h4>
+                            <p id="season-text">Season terbaru! Map terbesar 'Megacity' dengan 100 pemain. Final boss
+                                'Omega Commander' hadir.</p>
+                            <p class="season-date" id="season-date">📅 Oktober 2025</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Player Statistics -->
+                <div class="sidebar-2">
+                    <div class="sidebar-inner">
+                        <h3>📊 Player Stats</h3>
+                        <div class="stat-grid">
+                            <div class="stat-item">
+                                <span class="stat-value" id="stat-total-rampasan">4.2M</span>
+                                <span class="stat-label">Total Rampasan</span>
+                                <div class="stat-bar">
+                                    <div class="stat-bar-fill" id="bar-total-rampasan" style="width: 100%"></div>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value" id="stat-kills">245M</span>
+                                <span class="stat-label">Total Kills</span>
+                                <div class="stat-bar">
+                                    <div class="stat-bar-fill" id="bar-kills" style="width: 100%"></div>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value" id="stat-Serbuan">33.8M</span>
+                                <span class="stat-label">Serbuan</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value" id="stat-Bertahan">23%</span>
+                                <span class="stat-label">Win Rate</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value" id="stat-kd">1.4</span>
+                                <span class="stat-label">Avg K/D</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </main>
+
+        <!-- === FOOTER === -->
+        <footer class="footer-1">
+            <span>© 2026 - Pemrograman Web - Universitas Amikom Yogyakarta</span>
+        </footer>
+
+        <footer class="footer-2">
+            <span>RIYAN - 24.83.1113</span>
+        </footer>
+    </div>
+</body>
+
+</html>

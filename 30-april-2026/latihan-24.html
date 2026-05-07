@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Landing Page</title>
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 2s forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hover-scale:hover {
+            transform: scale(1.1);
+            transition: transform 0.3s;
+        }
+
+        .hero {
+            background-color: #333;
+            color: #fff;
+            padding: 100px 0;
+        }
+
+        .pricing-plan {
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .pricing-plan:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero text-center">
+        <div class="container fade-in-up">
+            <h1>Selamat Datang di Situs Kami</h1>
+            <p class="lead">Kami memberikan Layanan Terbaik untuk Kebutuhan Anda</p>
+            <a href="#services" class="btn btn-primary btn-lg">Pelajari Lebih Lanjut</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="container mt-5">
+        <h2 class="text-center mb-4">Layanan Kami</h2>
+        <div class="row">
+            <div class="col-md-4 fade-in-up">
+                <div class="card hover-scale">
+                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="Layanan 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Layanan 1</h5>
+                        <p class="card-text">Deskripsi layanan pertama yang kami tawarkan.</p>
+                        <a href="#" class="btn btn-primary">Detail</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 fade-in-up">
+                <div class="card hover-scale">
+                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="Layanan 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Layanan 2</h5>
+                        <p class="card-text">Deskripsi layanan kedua yang kami tawarkan.</p>
+                        <a href="#" class="btn btn-primary">Detail</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 fade-in-up">
+                <div class="card hover-scale">
+                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="Layanan 3">
+                    <div class="card-body">
+                        <h5 class="card-title">Layanan 3</h5>
+                        <p class="card-text">Deskripsi layanan ketiga yang kami tawarkan.</p>
+                        <a href="#" class="btn btn-primary">Detail</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="container mt-5">
+        <h2 class="text-center mb-4">Testimoni Pengguna</h2>
+        <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="d-flex justify-content-center">
+                        <div class="card" style="width: 18rem;">
+                            <img src="https://via.placeholder.com/150" class="card-img-top" alt="Testimonial 1">
+                            <div class="card-body">
+                                <h5 class="card-title">Pengguna 1</h5>
+                                <p class="card-text">Layanan yang sangat memuaskan!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="d-flex justify-content-center">
+                        <div class="card" style="width: 18rem;">
+                            <img src="https://via.placeholder.com/150" class="card-img-top" alt="Testimonial 2">
+                            <div class="card-body">
+                                <h5 class="card-title">Pengguna 2</h5>
+                                <p class="card-text">Kualitas pelayanan terbaik yang pernah saya rasakan.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="d-flex justify-content-center">
+                        <div class="card" style="width: 18rem;">
+                            <img src="https://via.placeholder.com/150" class="card-img-top" alt="Testimonial 3">
+                            <div class="card-body">
+                                <h5 class="card-title">Pengguna 3</h5>
+                                <p class="card-text">Sangat merekomendasikan layanan ini!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Pricing Plan -->
+    <section id="pricing" class="container mt-5">
+        <h2 class="text-center mb-4">Pricing Plan</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card pricing-plan text-center fade-in-up">
+                    <div class="card-header bg-primary text-white">
+                        Paket Basic
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">$19.99/bulan</h5>
+                        <ul class="list-unstyled">
+                            <li>Fitur 1</li>
+                            <li>Fitur 2</li>
+                            <li>Fitur 3</li>
+                        </ul>
+                        <a href="#" class="btn btn-primary">Pilih Paket</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card pricing-plan text-center fade-in-up">
+                    <div class="card-header bg-success text-white">
+                        Paket Premium
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">$29.99/bulan</h5>
+                        <ul class="list-unstyled">
+                            <li>Fitur 1</li>
+                            <li>Fitur 2</li>
+                            <li>Fitur 3</li>
+                        </ul>
+                        <a href="#" class="btn btn-success">Pilih Paket</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card pricing-plan text-center fade-in-up">
+                    <div class="card-header bg-warning text-white">
+                        Paket Pro
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">$49.99/bulan</h5>
+                        <ul class="list-unstyled">
+                            <li>Fitur 1</li>
+                            <li>Fitur 2</li>
+                            <li>Fitur 3</li>
+                        </ul>
+                        <a href="#" class="btn btn-warning">Pilih Paket</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light text-center p-3 mt-5">
+        <p>&copy; 2024 BrandLogo. All rights reserved. | <a href="#" class="text-light">Privacy Policy</a></p>
+        <div>
+            <a href="#" class="text-light mx-2">Facebook</a>
+            <a href="#" class="text-light mx-2">Twitter</a>
+            <a href="#" class="text-light mx-2">Instagram</a>
+        </div>
+    </footer>
+
+<script src="assets/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
